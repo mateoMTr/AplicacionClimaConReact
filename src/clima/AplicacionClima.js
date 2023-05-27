@@ -15,38 +15,37 @@ export function AplicacionClima() {
     const [recibido, setRecibido] = useState(false);
     const [datos, setDatos] = useState(null);
 
-    const iconos = {
-        'wind': wind,
-        'rain': rain,
-        'clear-night': moon,
-        'partly-cloudy-night': night,
-        'partly-cloudy-day': cloudy,
-        'cloudy': cloud,
-        'clear-day': sun,
-    }
-    async function APICall() {
-        const APIKEY = 'GZTNXEAF42TTNC9ELYNP62LCP';
-        let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Bella%20union%20artigas%20uruguay?unitGroup=metric&key=${APIKEY}&contentType=json`);
-        let json = await response.json();
-        const IconSelect = (type) => iconos[type];
-        const iconoSeleccionado = IconSelect(json.days[0].icon);
-        setDatos({
-            Localizacion: json.resolvedAddress,
-            Fecha: json.days[0].datetime,
-            Temperatura: json.days[0].temp,
-            TempMax: json.days[0].tempmax,
-            Humedad: json.days[0].humidity,
-            TempMin: json.days[0].tempmin,
-            Icono: iconoSeleccionado,
-            Desc: json.days[0].description,
-        });
-
-
-        setRecibido(true);
-    }
 
     useEffect(() => {
-        let promise = APICall();
+        const iconos = {
+            'wind': wind,
+            'rain': rain,
+            'clear-night': moon,
+            'partly-cloudy-night': night,
+            'partly-cloudy-day': cloudy,
+            'cloudy': cloud,
+            'clear-day': sun,
+        }
+        async function APICall() {
+            const APIKEY = 'GZTNXEAF42TTNC9ELYNP62LCP';
+            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Bella%20union%20artigas%20uruguay?unitGroup=metric&key=${APIKEY}&contentType=json`);
+            let json = await response.json();
+            const IconSelect = (type) => iconos[type];
+            const iconoSeleccionado = IconSelect(json.days[0].icon);
+            setDatos({
+                Localizacion: json.resolvedAddress,
+                Fecha: json.days[0].datetime,
+                Temperatura: json.days[0].temp,
+                TempMax: json.days[0].tempmax,
+                Humedad: json.days[0].humidity,
+                TempMin: json.days[0].tempmin,
+                Icono: iconoSeleccionado,
+                Desc: json.days[0].description,
+            });
+            setRecibido(true);
+        }
+
+        APICall();
 
     }, []);
 
