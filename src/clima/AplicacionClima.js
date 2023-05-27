@@ -46,10 +46,11 @@ export function AplicacionClima() {
         setRecibido(true);
     }
 
+const netify = ['encerio?']
     useEffect(() => {
         APICall();
 
-    }, []);
+    }, [netify]);
 
     if (!recibido) {
         return <h3>Cargando...</h3>;
