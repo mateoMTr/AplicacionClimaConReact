@@ -7,7 +7,6 @@ import  wind from './img/amcharts_weather_icons_1.0.0/static/rainy-1.svg'
 import  rain from './img/amcharts_weather_icons_1.0.0/static/rainy-6.svg'
 import  cloudy from './img/amcharts_weather_icons_1.0.0/static/cloudy-day-3.svg'
 import  sun from './img/amcharts_weather_icons_1.0.0/static/day.svg'
-import bg from './img/wallpaperbetter.com_3840x2160 (2).jpg'
 import { BsFillDropletFill} from "react-icons/bs";
 import {FaTemperatureHigh, FaTemperatureLow, } from "react-icons/fa";
 
@@ -46,11 +45,10 @@ export function AplicacionClima() {
         setRecibido(true);
     }
 
-const netify = ['encerio?']
     useEffect(() => {
         APICall();
 
-    }, [netify]);
+    }, []);
 
     if (!recibido) {
         return <h3>Cargando...</h3>;
