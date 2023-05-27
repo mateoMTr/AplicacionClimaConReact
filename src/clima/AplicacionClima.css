@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+*{
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: white;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.background{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-image: url("./img/wallpaperbetter.com_3840x2160 (2).jpg");
+    background-size:cover ;
+    background-repeat: no-repeat;
+
+}
+svg{
+    height: 5vh;
+    width: 5vw;
+}
+main {
+    display: grid;
+    place-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: min(100vh);
+}
+article{
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+    backdrop-filter: blur(1rem);
+    display: grid;
+    place-items: center;
+
+}
+article *{
+    overflow: initial;
+}
+section{
+    display: inline-flex;
+    padding: 1rem;
+}
+.temp{
+    display: grid;
+    place-items: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(1rem);
+    padding: 0.6rem;
+    border-radius: 15px;
+}
+.img-container img{
+    height: 20vh;
+    width: 100%;
+}
+.temp p{
+    font-size: 6rem;
+
+}
+.temp h6{
+    font-size: 1rem;
+}
+.temp-vars{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+.temp-vars section{
+    padding: 0.1rem;
+    font-size:2.5rem;
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+.fecha-contenedor{
+    width: 100%;
+    text-align: center;
+}
+.img-container {
+    margin: 1rem;
+}
+.iconito{
+    transform: scale(2);
+}
+.desc{
+    font-size: 1rem;
+    position: fixed;
+    top: 0;
+    margin: 1px;
+}
