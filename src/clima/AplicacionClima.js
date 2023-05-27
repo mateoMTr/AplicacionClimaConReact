@@ -46,7 +46,7 @@ export function AplicacionClima() {
     }
 
     useEffect(() => {
-        APICall();
+        let promise = APICall();
 
     }, []);
 
