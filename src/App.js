@@ -1,10 +1,10 @@
 
-import './App.css';
 import {AplicacionClima} from "./clima/AplicacionClima";
 function App() {
 
   return (
-      <AplicacionClima></AplicacionClima>
+     <AplicacionClima></AplicacionClima>
+
   );
 }
 

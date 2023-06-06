@@ -53,7 +53,7 @@ section{
     position: relative;
     color: white;
     text-align: center;
-    backdrop-filter: blur(1rem);
+    backdrop-filter: blur(0rem);
     padding: 0.6rem;
     border-radius: 15px;
 }
@@ -91,6 +91,7 @@ section{
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 .fecha-contenedor{
+
     width: 100%;
     text-align: center;
 }

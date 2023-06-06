@@ -9,6 +9,7 @@ import  cloudy from './img/amcharts_weather_icons_1.0.0/static/cloudy-day-3.svg'
 import  sun from './img/amcharts_weather_icons_1.0.0/static/day.svg'
 import { BsFillDropletFill} from "react-icons/bs";
 import {FaTemperatureHigh, FaTemperatureLow, } from "react-icons/fa";
+// import {SelectLocation} from "./SelecLocation";
 
 
 export function AplicacionClima() {
@@ -28,16 +29,17 @@ export function AplicacionClima() {
         }
         async function APICall() {
             const APIKEY = 'GZTNXEAF42TTNC9ELYNP62LCP';
-            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Bella%20union%20artigas%20uruguay?unitGroup=metric&key=${APIKEY}&contentType=json`);
+            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Bella%20Union%20Artigas%20Uruguay?unitGroup=metric&include=alerts%2Cdays%2Chours%2Ccurrent&key=GZTNXEAF42TTNC9ELYNP62LCP&contentType=json`);
             let json = await response.json();
             const IconSelect = (type) => iconos[type];
-            const iconoSeleccionado = IconSelect(json.days[0].icon);
+            const iconoSeleccionado = IconSelect(json.currentConditions.icon);
             setDatos({
                 Localizacion: json.resolvedAddress,
                 Fecha: json.days[0].datetime,
-                Temperatura: json.days[0].temp,
+                Hora: json.currentConditions.datetime,
+                Temperatura: json.currentConditions.feelslike,
                 TempMax: json.days[0].tempmax,
-                Humedad: json.days[0].humidity,
+                Humedad: json.currentConditions.humidity,
                 TempMin: json.days[0].tempmin,
                 Icono: iconoSeleccionado,
                 Desc: json.days[0].description,
@@ -50,10 +52,11 @@ export function AplicacionClima() {
     }, []);
 
     if (!recibido) {
-        return <h3>Cargando...</h3>;
+        return <h3>CARGANDO..</h3>;
     }
 
     return (
+
         <main>
             <div className={'background'}></div>
                 <article>
@@ -84,9 +87,10 @@ export function AplicacionClima() {
                             <span><FaTemperatureLow/></span>
                             <p>{datos.TempMin}°</p>
                         </section>
-                        <div className="fecha-contenedor"><h1>{datos.Fecha}</h1></div>
+                        <div className="fecha-contenedor"><h1>{datos.Fecha} / {datos.Hora}</h1></div>
                     </div>
                 </article>
         </main>
     );
 }
+
