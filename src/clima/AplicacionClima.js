@@ -30,25 +30,32 @@ export function AplicacionClima() {
             'cloudy': cloud,
             'clear-day': sun,
         }
-        async function APICall() {
-            const APIKEY = 'GZTNXEAF42TTNC9ELYNP62LCP';
-            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${URL}?unitGroup=metric&include=alerts%2Cdays%2Chours%2Ccurrent&key=${APIKEY}&contentType=json`);
-            let json = await response.json();
-            const IconSelect = (type) => iconos[type];
-            const iconoSeleccionado = IconSelect(json.currentConditions.icon);
-            setDatos({
-                Localizacion: json.resolvedAddress,
-                Fecha: json.days[0].datetime,
-                Hora: json.currentConditions.datetime,
-                Temperatura: json.currentConditions.feelslike,
-                TempMax: json.days[0].tempmax,
-                Humedad: json.currentConditions.humidity,
-                TempMin: json.days[0].tempmin,
-                Icono: iconoSeleccionado,
-                Desc: json.days[0].description,
-            });
-            setRecibido(true);
-        }
+     
+try {
+    
+            async function APICall() {
+                const APIKEY = 'GZTNXEAF42TTNC9ELYNP62LCP';
+                let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${URL}?unitGroup=metric&include=alerts%2Cdays%2Chours%2Ccurrent&key=${APIKEY}&contentType=json`);
+                let json = await response.json();
+                const IconSelect = (type) => iconos[type];
+                const iconoSeleccionado = IconSelect(json.currentConditions.icon);
+                setDatos({
+                    Localizacion: json.resolvedAddress,
+                    Fecha: json.days[0].datetime,
+                    Hora: json.currentConditions.datetime,
+                    Temperatura: json.currentConditions.feelslike,
+                    TempMax: json.days[0].tempmax,
+                    Humedad: json.currentConditions.humidity,
+                    TempMin: json.days[0].tempmin,
+                    Icono: iconoSeleccionado,
+                    Desc: json.days[0].description,
+                });
+                setRecibido(true);
+            }
+            
+} catch (error) {
+    
+}
 
         APICall();
 
