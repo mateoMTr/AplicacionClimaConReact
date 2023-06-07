@@ -9,15 +9,18 @@ import  cloudy from './img/amcharts_weather_icons_1.0.0/static/cloudy-day-3.svg'
 import  sun from './img/amcharts_weather_icons_1.0.0/static/day.svg'
 import { BsFillDropletFill} from "react-icons/bs";
 import {FaTemperatureHigh, FaTemperatureLow, } from "react-icons/fa";
-// import {SelectLocation} from "./SelecLocation";
+import {SelectLocation} from "./SelecLocation";
 
 
 export function AplicacionClima() {
     const [recibido, setRecibido] = useState(false);
     const [datos, setDatos] = useState(null);
+    const [URL, setURL] = useState('Bella%20Union%20Artigas%20Uruguay');
 
 
     useEffect(() => {
+
+
         const iconos = {
             'wind': wind,
             'rain': rain,
@@ -29,7 +32,7 @@ export function AplicacionClima() {
         }
         async function APICall() {
             const APIKEY = 'GZTNXEAF42TTNC9ELYNP62LCP';
-            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Bella%20Union%20Artigas%20Uruguay?unitGroup=metric&include=alerts%2Cdays%2Chours%2Ccurrent&key=GZTNXEAF42TTNC9ELYNP62LCP&contentType=json`);
+            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${URL}?unitGroup=metric&include=alerts%2Cdays%2Chours%2Ccurrent&key=${APIKEY}&contentType=json`);
             let json = await response.json();
             const IconSelect = (type) => iconos[type];
             const iconoSeleccionado = IconSelect(json.currentConditions.icon);
@@ -49,7 +52,7 @@ export function AplicacionClima() {
 
         APICall();
 
-    }, []);
+    }, [URL]);
 
     if (!recibido) {
         return <h3>CARGANDO..</h3>;
@@ -59,6 +62,7 @@ export function AplicacionClima() {
 
         <main>
             <div className={'background'}></div>
+            <SelectLocation recibirURL={setURL}/>
                 <article>
                     <h2 className={'desc'}>{datos.Desc}</h2>
 
