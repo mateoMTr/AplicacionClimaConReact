@@ -20,6 +20,14 @@ export function SelectLocation ({recibirURL}){
         e.preventDefault();
         setState(prevState => !prevState);
     }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('input[type=text]').forEach( node => node.addEventListener('keypress', e => {
+        if(e.keyCode == 13) {
+          e.preventDefault();
+        }
+      }))
+    });
     return (
         <div className={'Padre'}>
             <button
