@@ -39,6 +39,7 @@ export function SelectLocation ({recibirURL}){
                                 value={texto}
                                 placeholder={'Ingrese una localizacion'}
                                 onChange={HandleChange}
+                                onkeypress={ClickEvent}
                             />
                                 <button onClick={ClickEvent}
                                         type={"button"}
